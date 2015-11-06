@@ -11,5 +11,14 @@
 
     <artifactId>axe-service</artifactId>
 
-
+<dependencies>
+    <dependency>
+        <groupId>org.lzh.framework</groupId>
+        <artifactId>axe-manager</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.lzh.framework</groupId>
+        <artifactId>axe-rpc</artifactId>
+    </dependency>
+</dependencies>
 </project>

@@ -11,5 +11,10 @@
 
     <artifactId>axe-domain</artifactId>
 
-
+<dependencies>
+    <dependency>
+        <groupId>org.lzh.framework</groupId>
+        <artifactId>axe-common</artifactId>
+    </dependency>
+</dependencies>
 </project>

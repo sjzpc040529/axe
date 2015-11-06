@@ -12,4 +12,10 @@
     <artifactId>axe-manager</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>org.lzh.framework</groupId>
+            <artifactId>axe-dao</artifactId>
+        </dependency>
+    </dependencies>
 </project>
