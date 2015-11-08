@@ -16,5 +16,9 @@
         <groupId>org.lzh.framework</groupId>
         <artifactId>axe-common</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+    </dependency>
 </dependencies>
 </project>

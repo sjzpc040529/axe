@@ -85,6 +85,11 @@
         <!-- spring基础 -->
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-asm</artifactId>
+            <version>3.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
@@ -267,6 +272,13 @@
             <artifactId>log4j</artifactId>
             <version>${log4j-version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!--用于给vo对象注解，省去了getter setter方法-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.12.6</version>
         </dependency>
     </dependencies>
 </dependencyManagement>
