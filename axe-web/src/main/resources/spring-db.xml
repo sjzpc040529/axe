@@ -10,15 +10,20 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+    <context:property-placeholder location="jdbc.properties"/>
     <!-- 1. 数据源 : DriverManagerDataSource -->
     <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/test" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
+          class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="minIdle" value="${jdbc.minIdle}" />        <!-- 队列中的最小等待数 -->
+        <property name="maxIdle" value="${jdbc.maxIdle}" />        <!-- 队列中的最大等待数 -->
+        <property name="maxWait" value="${jdbc.maxWait}" />        <!-- 最长等待时间，单位毫秒 -->
+        <property name="maxActive" value="${jdbc.maxActive}" />    <!-- 最大活跃数 -->
+        <property name="initialSize" value="${jdbc.initialSize}" />
     </bean>
-
     <!--
         2. mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源
 

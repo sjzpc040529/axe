@@ -1,6 +1,4 @@
 package org.lzh.framework.axe.service.user;
-
-
 import org.lzh.framework.axe.domain.entities.User;
 
 import java.util.List;
