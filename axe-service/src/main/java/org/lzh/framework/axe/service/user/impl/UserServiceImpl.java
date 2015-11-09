@@ -1,16 +1,15 @@
 package org.lzh.framework.axe.service.user.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
 import org.lzh.framework.axe.dao.UserMapper;
 import org.lzh.framework.axe.domain.entities.User;
 import org.lzh.framework.axe.service.user.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+import javax.annotation.Resource;
+import java.util.List;
+
+@Service("userService")
 @Transactional  //此处不再进行创建SqlSession和提交事务，都已交由spring去管理了。
 public class UserServiceImpl implements UserService {
 

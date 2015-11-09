@@ -1,22 +1,21 @@
 package org.lzh.framework.axe.web.controller.user;
 
+import org.lzh.framework.axe.domain.entities.User;
+import org.lzh.framework.axe.service.user.UserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.lzh.framework.axe.domain.entities.User;
-import org.lzh.framework.axe.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-	@Autowired
+	@Resource
 	private UserService userService;
 
 	/**
