@@ -18,6 +18,7 @@
         <module>axe-rpc</module>
     </modules>
     <packaging>pom</packaging>
+
     <properties>
         <spring.security.version>3.1.4.RELEASE</spring.security.version>
         <mitreid-version>1.1.8-crack-SNAPSHOT</mitreid-version>
@@ -38,6 +39,7 @@
         <freemarker-version>2.3.20</freemarker-version>
         <json-version>2.3.2</json-version>
         <aspectj-version>1.7.4</aspectj-version>
+        <jdk.version>1.7</jdk.version>
     </properties>
 
     <dependencyManagement>
@@ -283,47 +285,74 @@
     </dependencies>
 </dependencyManagement>
     <build>
-
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*.*</include>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
+            <!-- compiler插件, 设定JDK版本 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                     <encoding>UTF-8</encoding>
+                    <showWarnings>true</showWarnings>
                 </configuration>
             </plugin>
+
+            <!-- war打包插件, 设定war包名称不带版本号 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.16</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
                 <configuration>
-                    <junitArtifactName>junit:junit</junitArtifactName>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
+                    <warName>${project.artifactId}</warName>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>*.*</include>
+                                <include>**/*.*</include>
+                            </includes>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>false</downloadJavadocs>
-                    <wtpversion>2.0</wtpversion>
-                    <sourceExcludes>
-                        <sourceExclude>**/.svn/**</sourceExclude>
-                    </sourceExcludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-            </plugin>
+
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>axe-dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.axe.domain>http://demo.axe.dev</profile.axe.domain>
+                <profile.axe.jdbc.driver>com.mysql.jdbc.Driver</profile.axe.jdbc.driver>
+                <profile.axe.jdbc.url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</profile.axe.jdbc.url>
+                <profile.axe.jdbc.username>root</profile.axe.jdbc.username>
+                <profile.axe.jdbc.password>root</profile.axe.jdbc.password>
+                <profile.axe.jdbc.initialSize>5</profile.axe.jdbc.initialSize>
+                <profile.axe.jdbc.minIdle>1</profile.axe.jdbc.minIdle>
+                <profile.axe.jdbc.maxIdle>10</profile.axe.jdbc.maxIdle>
+                <profile.axe.jdbc.maxActive>3</profile.axe.jdbc.maxActive>
+                <profile.axe.jdbc.maxWait>3000</profile.axe.jdbc.maxWait>
+                <profile.axe.jdbc.poolPreparedStatements>false</profile.axe.jdbc.poolPreparedStatements>
+                <profile.axe.jdbc.defaultAutoCommit>false</profile.axe.jdbc.defaultAutoCommit>
+            </properties>
+
+        </profile>
+    </profiles>
 </project>

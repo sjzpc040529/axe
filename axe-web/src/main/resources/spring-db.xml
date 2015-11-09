@@ -18,11 +18,29 @@
         <property name="url" value="${jdbc.url}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
+
+        <!-- Connection Pooling Info -->
         <property name="minIdle" value="${jdbc.minIdle}" />        <!-- 队列中的最小等待数 -->
         <property name="maxIdle" value="${jdbc.maxIdle}" />        <!-- 队列中的最大等待数 -->
         <property name="maxWait" value="${jdbc.maxWait}" />        <!-- 最长等待时间，单位毫秒 -->
         <property name="maxActive" value="${jdbc.maxActive}" />    <!-- 最大活跃数 -->
         <property name="initialSize" value="${jdbc.initialSize}" />
+        <property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+        <property name="defaultAutoCommit" value="${jdbc.defaultAutoCommit}" />
+
+        <!-- 连接健康情况 -->
+        <property name="validationQuery" value="select 1" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnReturn" value="false" />
+        <property name="testOnBorrow" value="false" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/><!--回收Idel连接的时间间隔，60秒-->
+        <property name="minEvictableIdleTimeMillis" value="1800000"/><!--Idle时间，超过后回收。1800秒-->
+        <property name="numTestsPerEvictionRun" value="16"/><!--和maxActive数值一致-->
+
+        <!-- 连接泄漏回收参数 -->
+        <property name="logAbandoned"  value="true"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="180"/><!--泄露连接180秒后清除-->
     </bean>
     <!--
         2. mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源

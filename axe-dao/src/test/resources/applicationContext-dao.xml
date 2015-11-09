@@ -26,7 +26,6 @@
     </bean>
     <!--
         2. mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源
-
         MyBatis定义数据源,同意加载配置
     -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -46,6 +45,7 @@
         <property name="basePackage" value="org.lzh.framework.axe.dao" />
         <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
     </bean>
+
     <!--
         4. 事务管理 : DataSourceTransactionManager dataSource:引用上面定义的数据源
     -->
