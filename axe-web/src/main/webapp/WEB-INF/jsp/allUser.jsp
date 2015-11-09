@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+	  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <title>用户列表</title>
     
 	<script type="text/javascript">

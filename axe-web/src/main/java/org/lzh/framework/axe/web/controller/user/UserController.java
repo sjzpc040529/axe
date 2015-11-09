@@ -64,7 +64,7 @@ public class UserController {
 	public String updateUser(User user,HttpServletRequest request){
 
 
-		if(userService.update(user)){
+		if(userService.update(user)>0){
 			user = userService.findById(user.getId());
 			request.setAttribute("user", user);
 			return "redirect:/user/getAllUser";
@@ -94,7 +94,7 @@ public class UserController {
 	public void delUser(int id,HttpServletRequest request,HttpServletResponse response){
 		String result = "{\"result\":\"error\"}";
 
-		if(userService.delete(id)){
+		if(userService.delete(id)>0){
 			result = "{\"result\":\"success\"}";
 		}
 

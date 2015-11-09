@@ -22,14 +22,14 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    boolean update(User user);
+    Integer update(User user);
 
     /**
      * 删除用户信息
      * @param id
      * @return
      */
-    boolean delete(int id);
+    Integer delete(int id);
 
     /**
      * 通过ID查找

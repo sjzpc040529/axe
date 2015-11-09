@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service("userService")
+@Service
 @Transactional  //此处不再进行创建SqlSession和提交事务，都已交由spring去管理了。
 public class UserServiceImpl implements UserService {
 
 	@Resource
 	private UserMapper mapper;
 
-	public boolean delete(int id) {
+	public Integer delete(int id) {
 
 		return mapper.delete(id);
 	}
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 		mapper.save(user);
 	}
 
-	public boolean update(User user) {
+	public Integer update(User user) {
 
 		return mapper.update(user);
 	}
