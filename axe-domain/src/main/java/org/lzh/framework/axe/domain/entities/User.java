@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @description ÓÃ»§ĞÅÏ¢
+ * @description ç”¨æˆ·ä¿¡æ¯
  * @author Courser
  * @version 1
  * @date 2015/11/7 20:23
@@ -20,11 +20,11 @@ public class User  implements Serializable{
      */
     private int id;
     /**
-     * ÄêÁä
+     * å¹´é¾„
      */
     private String age;
     /**
-     * ÄêÁä
+     * ç”¨æˆ·å
      */
     private String userName;
     public User(){

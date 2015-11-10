@@ -16,6 +16,7 @@
         <module>axe-domain</module>
         <module>axe-dao</module>
         <module>axe-rpc</module>
+        <module>axe-verify</module>
     </modules>
     <packaging>pom</packaging>
 

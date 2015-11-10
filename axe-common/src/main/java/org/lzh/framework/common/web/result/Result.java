@@ -22,7 +22,11 @@ public class Result<D> implements Serializable {
     @Getter
     @Setter
     private Integer resultCode;
-    public  Result(){
+    public  Result(boolean success){
+        this.success = success;
+
+    }
+    public Result(){
 
     }
 
@@ -35,12 +39,13 @@ public class Result<D> implements Serializable {
     }
 
     public static Result errorResult(Integer errorCode, String message) {
-        Result result = new Result();
-        result.success = false;
+        Result result = new Result(false);
+//        result.success = false;
         result.resultCode = errorCode;
         result.msg = message;
         return result;
     }
+
 
 
 }
