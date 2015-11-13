@@ -2,18 +2,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
     <display-name>axe-web</display-name>
-
-    <!-- Enables use of HTTP methods PUT and DELETE,默认参数名: _method -->
-    <filter>
-        <filter-name>httpMethodFilter</filter-name>
-        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>httpMethodFilter</filter-name>
-        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
-    </filter-mapping>
-
     <!-- 字符编码过滤器 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -30,8 +18,21 @@
 
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <!--<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>-->
+    </filter-mapping>
+    <!-- Enables use of HTTP methods PUT and DELETE,默认参数名: _method -->
+    <filter>
+        <filter-name>httpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>httpMethodFilter</filter-name>
         <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
     </filter-mapping>
+
+
 
     <!-- Spring 容器加载 -->
     <listener>
@@ -66,7 +67,7 @@
 
     <!-- 欢迎页面 -->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index2.html</welcome-file>
     </welcome-file-list>
 
 </web-app>

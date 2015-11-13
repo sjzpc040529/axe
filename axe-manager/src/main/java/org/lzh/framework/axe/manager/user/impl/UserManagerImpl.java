@@ -1,8 +1,9 @@
 package org.lzh.framework.axe.manager.user.impl;
 
+import org.lzh.framework.axe.dao.UserMapper;
 import org.lzh.framework.axe.domain.entities.User;
 import org.lzh.framework.axe.manager.user.UserManager;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -12,17 +13,17 @@ import javax.annotation.Resource;
  * @date: 15/11/9 下午4:02
  * @version: V1.0
  */
-@Component
+@Service
 public class UserManagerImpl implements UserManager {
     @Resource
-    private UserManager userManager ;
+    private UserMapper userMapper ;
     /**
      * 保存
      * @param user
      */
     @Override
     public void save(User user) {
-        userManager.save(user);
+        userMapper.save(user);
 
     }
 }
