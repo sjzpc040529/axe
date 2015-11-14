@@ -1,5 +1,6 @@
 package org.lzh.framework.axe.manager.user.impl;
 
+import org.lzh.framework.axe.dao.UserMapper;
 import org.lzh.framework.axe.domain.entities.User;
 import org.lzh.framework.axe.manager.user.UserManager;
 import org.springframework.stereotype.Service;
