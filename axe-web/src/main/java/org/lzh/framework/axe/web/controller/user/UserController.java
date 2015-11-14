@@ -93,7 +93,7 @@ public class UserController {
 	@RequestMapping("/delUser")
 	public void delUser(int id,HttpServletRequest request,HttpServletResponse response){
 		String result = "{\"result\":\"error\"}";
-
+String aa ="111111111";
 		if(userService.delete(id)>0){
 			result = "{\"result\":\"success\"}";
 		}

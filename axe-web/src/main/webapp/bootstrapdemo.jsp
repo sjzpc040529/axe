@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<h1>北京，bootstrap！</h1>
+<h1>北京3，bootstrap！</h1>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>

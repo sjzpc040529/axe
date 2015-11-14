@@ -20,5 +20,9 @@
         <groupId>org.lzh.framework</groupId>
         <artifactId>axe-rpc</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.lzh.framework</groupId>
+        <artifactId>axe-dao</artifactId>
+    </dependency>
 </dependencies>
 </project>
