@@ -1,3 +1,5 @@
+package org.lzh.framework.axe.study.quartz.test;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class CronTriggerMain {
     public static void main(String[] args) {
 
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring-config.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("quartz-cron.xml");
       while(true){
 
       }

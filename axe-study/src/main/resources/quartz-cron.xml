@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns:security="http://www.springframework.org/schema/security"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	   xmlns:security="http://www.springframework.org/schema/security"
 	   xmlns:p="http://www.springframework.org/schema/p"
 	   xsi:schemaLocation="
 		http://www.springframework.org/schema/aop
@@ -21,37 +21,62 @@
 
 
 	<bean id="job1" class="org.lzh.framework.axe.study.quartz.Job1"/>
+	<!--<bean id="job2" class="org.lzh.framework.axe.study.quartz.Job2"/>-->
 
 	<!--step1. 配置作业类 -->
 	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<!--任务类-->
 		<property name="targetObject" ref="job1"/>
+		<!--<property name="group">-->
+			<!-- -->
+		<!--</property>-->
 		<!--作业类方法-->
 		<property name="targetMethod" value="doJob"/>
 		<!-- 作业不并发调度 -->
 		<property name="concurrent" value="false"/>
 	</bean>
 
-	<!--触发器(3.o用的触发器到了4.0就换成了工厂）-->
-	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
-		<property name="jobDetail" ref="jobDetail" />
-		<property name="startDelay" value="0" /><!-- 调度工厂实例化后，经过0秒开始执行调度 -->
-		<property name="repeatInterval" value="2000" /><!-- 每2秒调度一次 -->
+	<!--step1. 配置作业类 -->
+	<bean id="job2Detail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="org.lzh.framework.axe.study.quartz.Job2"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="timeout" value="0"/>
+			</map>
+		</property>
+
 	</bean>
+
 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="jobDetail" />
 		<!--&lt;!&ndash;每天12:00运行一次 &ndash;&gt;-->
 		<!--<property name="cronExpression" value="0 0 12 * * ?" />-->
 		<!--每5秒执行一次-->
-		<property name="cronExpression" value="0/10 * * * * ?"/>
+		<property name="cronExpression" value="0/2 * * * * ?"/>
 	</bean>
 
+	<bean id="job2Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="job2Detail" />
+		<!--&lt;!&ndash;每天12:00运行一次 &ndash;&gt;-->
+		<!--<property name="cronExpression" value="0 0 12 * * ?" />-->
+		<!--每5秒执行一次-->
+		<property name="cronExpression" value="0/2 * * * * ?"/>
+	</bean>
+	<!--调度工厂，需要注入出发器-->
 	<bean id="timerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
 		<property name="triggers">
 			<list>
-				<!--<ref bean="cronTrigger"/>-->
-				<ref bean="simpleTrigger"/>
+				<ref bean="cronTrigger"/>
+				<ref bean="job2Trigger"/>
+				<!--<ref bean="simpleTrigger"/>-->
 			</list>
 		</property>
+		<property name="taskExecutor" ref="taskExecutor"></property>
+	</bean>
+	<!-- 线程执行器配置，用于任务注册 -->
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="queueCapacity" value="500" />
 	</bean>
 </beans>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+
+    <bean id="job1" class="org.lzh.framework.axe.study.quartz.Job1"/>
+
+    <!--step1. 配置作业类 -->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!--任务类-->
+        <property name="targetObject" ref="job1"/>
+        <!--作业类方法-->
+        <property name="targetMethod" value="doJob"/>
+        <!-- 作业不并发调度 -->
+        <property name="concurrent" value="false"/>
+
+    </bean>
+
+    <!--step2. 触发器(3.o用的触发器到了4.0就换成了工厂）-->
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail" />
+        <property name="startDelay" value="0" /><!-- 调度工厂实例化后，经过0秒开始执行调度 -->
+        <property name="repeatInterval" value="2000" /><!-- 每2秒调度一次 -->
+    </bean>
+
+
+    <!--step3. 调度工厂-->
+    <bean id="timerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
+        <property name="triggers">
+            <list>
+               <!--<ref bean="cronTrigger"/>-->
+                <ref bean="simpleTrigger"/>
+            </list>
+        </property>
+    </bean>
+</beans>
