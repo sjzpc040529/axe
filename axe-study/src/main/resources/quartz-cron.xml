@@ -33,7 +33,7 @@
 		<!--作业类方法-->
 		<property name="targetMethod" value="doJob"/>
 		<!-- 作业不并发调度 -->
-		<property name="concurrent" value="false"/>
+		<property name="concurrent" value="true"/>
 	</bean>
 
 	<!--step1. 配置作业类 -->
@@ -52,7 +52,7 @@
 		<!--&lt;!&ndash;每天12:00运行一次 &ndash;&gt;-->
 		<!--<property name="cronExpression" value="0 0 12 * * ?" />-->
 		<!--每5秒执行一次-->
-		<property name="cronExpression" value="0/2 * * * * ?"/>
+		<property name="cronExpression" value="0/1 * * * * ?"/>
 	</bean>
 
 	<bean id="job2Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -60,7 +60,7 @@
 		<!--&lt;!&ndash;每天12:00运行一次 &ndash;&gt;-->
 		<!--<property name="cronExpression" value="0 0 12 * * ?" />-->
 		<!--每5秒执行一次-->
-		<property name="cronExpression" value="0/2 * * * * ?"/>
+		<property name="cronExpression" value="0/1 * * * * ?"/>
 	</bean>
 	<!--调度工厂，需要注入出发器-->
 	<bean id="timerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
