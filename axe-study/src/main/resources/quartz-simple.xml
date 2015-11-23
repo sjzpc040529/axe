@@ -15,7 +15,7 @@
         <!--作业类方法-->
         <property name="targetMethod" value="doJob"/>
         <!-- 作业不并发调度 -->
-        <property name="concurrent" value="true"/>
+        <property name="concurrent" value="false"/>
 
     </bean>
 
