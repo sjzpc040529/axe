@@ -6,7 +6,8 @@ package org.lzh.framework.axe.study.quartz;
  * @date: 15/11/18 上午11:30
  * @version: V1.0
  */
-import org.lzh.framework.util.StringUtils;
+
+import org.lzh.framework.common.util.StringUtils;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;

@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 			return Result.successResult(true);
 		}catch (Exception e){
 			logger.info("class name:{}#{}==>{}", this.getClass().getName(), "save", e);
-			return  Result.errorResult(ErrorEnum.SYSTEM_IS_ERROR.getCode(),ErrorEnum.SYSTEM_IS_ERROR.getMsg());
+			return  Result.errorResult(ErrorEnum.SYSTEM_IS_ERROR.getCode(), ErrorEnum.SYSTEM_IS_ERROR.getMsg());
 		}
 
 

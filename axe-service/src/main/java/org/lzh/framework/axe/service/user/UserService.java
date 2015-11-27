@@ -1,4 +1,5 @@
 package org.lzh.framework.axe.service.user;
+
 import org.lzh.framework.axe.domain.entities.User;
 import org.lzh.framework.common.web.result.Result;
 

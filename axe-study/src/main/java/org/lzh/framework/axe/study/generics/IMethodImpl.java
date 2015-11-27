@@ -1,6 +1,7 @@
 package org.lzh.framework.axe.study.generics;
 
-import org.lzh.framework.axe.common.Printer;
+
+import org.lzh.framework.common.util.Printer;
 
 /**
  * @Description:
