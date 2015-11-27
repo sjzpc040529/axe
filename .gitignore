@@ -1,0 +1,10 @@
+*.idea
+*.iml
+.project
+.settings
+.classpath
+target/
+.DS_Store
+*.log
+#/.gitignore
+#.gitignore
