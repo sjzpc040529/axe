@@ -283,8 +283,27 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback-version}</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+            <version>0.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
 
-        <!--用于给vo对象注解，省去了getter setter方法-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -504,6 +523,7 @@
                 <profile.axe.jdbc.maxWait>3000</profile.axe.jdbc.maxWait>
                 <profile.axe.jdbc.poolPreparedStatements>false</profile.axe.jdbc.poolPreparedStatements>
                 <profile.axe.jdbc.defaultAutoCommit>false</profile.axe.jdbc.defaultAutoCommit>
+                <profile.axe.logback.home>/Users/lizhaohua/logs/axe-web</profile.axe.logback.home>
             </properties>
 
         </profile>

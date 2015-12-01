@@ -2,6 +2,8 @@ package org.lzh.framework.axe.web.controller.user;
 
 import org.lzh.framework.axe.domain.entities.User;
 import org.lzh.framework.axe.service.user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Resource
 	private UserService userService;
@@ -27,7 +30,7 @@ public class UserController {
 	public String getAllUser(HttpServletRequest request){
 
 		List<User> findAll = userService.findAll();
-
+logger.debug("接口"+"/getAllUser");
 		request.setAttribute("userList", findAll);
 		return "/allUser";
 	}
@@ -39,7 +42,6 @@ public class UserController {
 	 */
 	@RequestMapping("/toAddUser")
 	public String toAddUser(HttpServletRequest request){
-
 		return "/addUser";
 	}
 	/**
