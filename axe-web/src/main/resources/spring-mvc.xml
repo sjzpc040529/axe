@@ -10,9 +10,34 @@
 	http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <!--<context:annotation-config></context:annotation-config>-->
+    <context:component-scan base-package="org.lzh.framework.axe.web.controller"/>
+    <mvc:annotation-driven />
     <mvc:default-servlet-handler/>
+
+
+    <!-- 配置静态资源 -->
+    <mvc:resources location="/resources/" mapping="/resources/**" />
+    <mvc:resources mapping="/*.html" location="/"/>
     <mvc:resources mapping="/public/**" location="/public/"/>
-    
+
+
+    <!--国际化-->
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+    </mvc:interceptors>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <array>
+                <!--<value>/WEB-INF/messages/globalMessage</value>-->
+                <!--<value>/WEB-INF/messages/validationMessage</value>-->
+            </array>
+        </property>
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="cacheSeconds" value="0" />
+    </bean>
+
     <!-- XML转码器 -->
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
 
@@ -53,9 +78,6 @@
     <!-- 扫描控制器类 -->
     <context:component-scan base-package="org.lzh.framework.axe.web.controller/**/*" />
 
-    <!-- 配置静态资源 -->
-    <mvc:resources location="/resources/" mapping="/resources/**" />
-    <mvc:resources mapping="/*.html" location="/"/>
 
     <!-- 采用注解方式配置MVC -->
     <mvc:annotation-driven  content-negotiation-manager="contentNegotiationManager">

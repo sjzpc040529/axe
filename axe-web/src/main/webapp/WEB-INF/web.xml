@@ -29,7 +29,7 @@
 
     <filter-mapping>
         <filter-name>httpMethodFilter</filter-name>
-        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
     </filter-mapping>
 
 
@@ -51,7 +51,7 @@
 
     <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
     <servlet>
-        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -62,7 +62,7 @@
 
     <!-- Map all *.spring requests to the DispatcherServlet for handling -->
     <servlet-mapping>
-        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

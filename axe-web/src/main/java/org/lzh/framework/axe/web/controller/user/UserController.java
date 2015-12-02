@@ -35,7 +35,7 @@ public class UserController {
 	@RequestMapping(value = "/getAllUser",method = RequestMethod.GET)
 	public String getAllUser(HttpServletRequest request){
 
-		Result<List<User>> result  = userService.findAll();
+		Result<List<User>> result  = userVerify.findAll();
 		logger.debug("接口"+"/getAllUser");
 		request.setAttribute("userList", result.getData());
 		return "/allUser";

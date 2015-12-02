@@ -40,7 +40,7 @@ public class UserVerifyImpl implements UserVerify {
      * @return
      */
     @Override
-    public Result getAllUser() {
+    public Result findAll() {
         return userService.findAll();
     }
 }
