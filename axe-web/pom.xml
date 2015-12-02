@@ -12,10 +12,13 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
+            <groupId>org.lzh.framework</groupId>
+            <artifactId>axe-verify</artifactId>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -24,10 +27,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.lzh.framework</groupId>
-            <artifactId>axe-service</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
@@ -98,10 +98,10 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
-                    <path>/saint</path>
+                    <path>/${project.artifactId}</path>
                     <server>localhost</server>
                     <uriEncoding>UTF-8</uriEncoding>
-                    <port>8081</port>
+                    <port>8080</port>
                 </configuration>
             </plugin>
 
@@ -111,11 +111,11 @@
                 <configuration>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>8081</port>
+                            <port>8080</port>
                             <maxIdleTime>30000</maxIdleTime>
                         </connector>
                     </connectors>
-                    <contextPath>/axe-web</contextPath>
+                    <contextPath>/${project.artifactId}</contextPath>
                 </configuration>
             </plugin>
 

@@ -18,5 +18,5 @@ public interface UserService {
 	Integer update(User user);
 	Integer delete(int id);
 	User findById(int id);
-	List<User> findAll();
+	Result<List<User>> findAll();
 }

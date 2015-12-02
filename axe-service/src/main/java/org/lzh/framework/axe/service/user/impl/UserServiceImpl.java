@@ -27,9 +27,10 @@ public class UserServiceImpl implements UserService {
 		return mapper.delete(id);
 	}
 
-	public List<User> findAll() {
-		List<User> findAllList = mapper.findAll();
-		return findAllList;
+	public Result<List<User>>  findAll() {
+//		List<User> findAllList = mapper.findAll();
+		return Result.successResult(mapper.findAll());
+//		return findAllList;
 	}
 
 	public User findById(int id) {
@@ -49,7 +50,7 @@ public class UserServiceImpl implements UserService {
 			userManager.save(user);
 			return Result.successResult(true);
 		}catch (Exception e){
-			logger.info("class name:{}#{}==>{}", this.getClass().getName(), "save", e);
+			logger.error("class name:{}#{}==>{}", this.getClass().getName(), "save", e);
 			return  Result.errorResult(ErrorEnum.SYSTEM_IS_ERROR.getCode(), ErrorEnum.SYSTEM_IS_ERROR.getMsg());
 		}
 

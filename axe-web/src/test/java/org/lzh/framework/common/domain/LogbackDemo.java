@@ -30,6 +30,6 @@ public class LogbackDemo {
         log.info("Hello,{}!   {}!", name, message);
 
         // 可以传入一个数组，结果为"Fruit:  apple,banana"
-        log.info("Fruit:  {},{}", fruits);
+        log.info("Fruit:  {}", fruits);
     }
 }

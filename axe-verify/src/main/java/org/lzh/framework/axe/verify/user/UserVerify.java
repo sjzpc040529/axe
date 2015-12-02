@@ -15,4 +15,10 @@ public interface UserVerify {
      * @return
      */
     public Result save(User user);
+
+    /**
+     * 获取所有用户信息
+     * @return
+     */
+    public Result getAllUser();
 }

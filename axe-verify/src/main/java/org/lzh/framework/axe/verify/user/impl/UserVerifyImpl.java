@@ -34,4 +34,13 @@ public class UserVerifyImpl implements UserVerify {
         return userService.save(user);
 
     }
+
+    /**
+     * 获取所有信息
+     * @return
+     */
+    @Override
+    public Result getAllUser() {
+        return userService.findAll();
+    }
 }

@@ -2,10 +2,13 @@ package org.lzh.framework.axe.web.controller.user;
 
 import org.lzh.framework.axe.domain.entities.User;
 import org.lzh.framework.axe.service.user.UserService;
+import org.lzh.framework.axe.verify.user.UserVerify;
+import org.lzh.framework.common.web.result.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -20,18 +24,20 @@ public class UserController {
 
 	@Resource
 	private UserService userService;
+	@Resource
+	private UserVerify userVerify ;
 
 	/**
 	 * 获取所有用户列表
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/getAllUser")
+	@RequestMapping(value = "/getAllUser",method = RequestMethod.GET)
 	public String getAllUser(HttpServletRequest request){
 
-		List<User> findAll = userService.findAll();
-logger.debug("接口"+"/getAllUser");
-		request.setAttribute("userList", findAll);
+		Result<List<User>> result  = userService.findAll();
+		logger.debug("接口"+"/getAllUser");
+		request.setAttribute("userList", result.getData());
 		return "/allUser";
 	}
 

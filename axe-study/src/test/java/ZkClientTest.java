@@ -19,7 +19,7 @@ public class ZkClientTest {
 //            for (int i = 0; i < 20; i++) {
 //                service.execute(new Task1("[Concurrent-" + i + "]"));
 //            }
-            generateSeqUtils.generateZkSeq("/order",5,false);
+            generateSeqUtils.generateZkSeq("/order",5,true);
         }
 
     }
