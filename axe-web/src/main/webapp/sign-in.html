@@ -75,19 +75,19 @@
         <div class="block">
             <p class="block-heading">淘汽档口管理系统1</p>
             <div class="block-body">
-                <form>
+                <form id="loginForm" action="/sign/submit" method="post">
                     <label>用户</label>
                     <input type="text" class="span12">
                     <label>密码</label>
                     <input type="password" class="span12">
-                    <a href="index.jsp" class="btn btn-primary pull-right">登录</a>
+                    <a id="a_submit" href="#" class="btn btn-primary pull-right">登录</a>
                     <label class="remember-me"><input type="checkbox">记住我</label>
                     <div class="clearfix"></div>
                 </form>
             </div>
         </div>
         <p class="pull-right" style=""><a href="http://www.tqmall.com" target="blank">tqmall</a></p>
-        <p><a href="reset-password.html">忘记密码1？</a></p>
+        <p><a href="reset-password.html">忘记密码？</a></p>
     </div>
 </div>
 
@@ -100,6 +100,10 @@
         $("[rel=tooltip]").tooltip();
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
+            $('#a_submit').click(function(){
+
+                $('#loginForm').submit();
+            });
         });
     </script>
     
