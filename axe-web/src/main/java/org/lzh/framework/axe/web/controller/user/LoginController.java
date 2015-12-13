@@ -26,13 +26,14 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/submit",method = RequestMethod.POST)
-    public String submit(HttpServletRequest request,@Validated String signName){
+    public String submit(HttpServletRequest request,@Validated String  signName){
 
 
 //        Result<List<User>> result  = userVerify.findAll();
 //        logger.debug("接口"+"/getAllUser");
 //        request.setAttribute("userList", result.getData());
-        request.getSession().setAttribute("loginName",request);
+        String signName1=request.getParameter("signName");
+        request.getSession().setAttribute("loginName",signName);
         return "redirect:/admin/index";
     }
 }

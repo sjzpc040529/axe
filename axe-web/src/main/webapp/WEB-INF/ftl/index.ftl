@@ -65,7 +65,7 @@
             <li><a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">Settings</a></li>
             <li id="fat-menu" class="dropdown">
                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="icon-user"></i> Jack Smith
+                    <i class="icon-user"></i>${loginName}
                     <i class="icon-caret-down"></i>
                 </a>
 
@@ -78,7 +78,7 @@
                 </ul>
             </li>
 
-        </ul>
+        </ul>j
         <a class="brand" href="index.html"><span class="first">Your</span> <span class="second">Company</span></a>
     </div>
 </div>
@@ -93,7 +93,7 @@
 
     <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Dashboard</a>
     <ul id="dashboard-menu" class="nav nav-list collapse in">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="${base}/admin/index">Home</a></li>
         <li ><a href="users.html">Sample List</a></li>
         <li ><a href="user.html">Sample Item</a></li>
         <li ><a href="media.html">Media</a></li>
