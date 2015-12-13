@@ -582,7 +582,7 @@
             <properties>
                 <profile.axe.domain>http://demo.axe.dev</profile.axe.domain>
                 <profile.axe.jdbc.driver>com.mysql.jdbc.Driver</profile.axe.jdbc.driver>
-                <profile.axe.jdbc.url>jdbc:mysql://localhost:3307/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</profile.axe.jdbc.url>
+                <profile.axe.jdbc.url>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</profile.axe.jdbc.url>
                 <profile.axe.jdbc.username>root</profile.axe.jdbc.username>
                 <profile.axe.jdbc.password>root</profile.axe.jdbc.password>
                 <profile.axe.jdbc.initialSize>5</profile.axe.jdbc.initialSize>

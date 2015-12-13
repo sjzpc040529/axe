@@ -27,7 +27,7 @@ public class UserController {
 	@Resource
 	private UserVerify userVerify ;
 
-	/**
+	/**用户中心控制
 	 * 获取所有用户列表
 	 * @param request
 	 * @return

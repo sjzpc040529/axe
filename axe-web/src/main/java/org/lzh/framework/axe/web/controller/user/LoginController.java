@@ -3,13 +3,14 @@ package org.lzh.framework.axe.web.controller.user;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @Description:
+ * @Description: 登录认证控制
  * @author: lizhaohua
  * @date: 15/12/2 下午6:03
  * @version: V1.0
@@ -25,12 +26,13 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/submit",method = RequestMethod.POST)
-    public String submit(HttpServletRequest request){
+    public String submit(HttpServletRequest request,@Validated String signName){
 
 
 //        Result<List<User>> result  = userVerify.findAll();
 //        logger.debug("接口"+"/getAllUser");
 //        request.setAttribute("userList", result.getData());
-        return "redirect:/user/getAllUser";
+        request.getSession().setAttribute("loginName",request);
+        return "redirect:/admin/index";
     }
 }
