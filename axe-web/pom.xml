@@ -16,6 +16,10 @@
             <artifactId>axe-verify</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.lzh.common</groupId>
+            <artifactId>framework-common-web</artifactId>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>

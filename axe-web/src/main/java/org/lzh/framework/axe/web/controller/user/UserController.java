@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +39,18 @@ public class UserController {
 		Result<List<User>> result  = userVerify.findAll();
 		logger.debug("接口"+"/getAllUser");
 		request.setAttribute("userList", result.getData());
-		return "/allUser";
+		return "/user/list";
 	}
+
+	@RequestMapping(value = "/ajax/getAllUser",method = RequestMethod.GET)
+	@ResponseBody
+	public Result ajax_getAllUser(HttpServletRequest request){
+
+		Result<List<User>> result  = userVerify.findAll();
+
+		return result;
+	}
+
 
 	/**
 	 * 跳转到添加用户界面

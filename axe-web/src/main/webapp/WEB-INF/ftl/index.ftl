@@ -1,8 +1,8 @@
-<#assign base=request.contextPath />
+<#--<#assign basePth=request.contextPath />-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base id="base" href="${base}">
+    <#--<base id="basePth" href="${basePath}">-->
     <meta charset="utf-8">
     <title>Bootstrap Admin</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -10,12 +10,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="${base}/public/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="${basePath}/public/bootstrap/css/bootstrap.css">
 
-    <link rel="stylesheet" type="text/css" href="${base}/public/css/theme.css">
-    <link rel="stylesheet" href="${base}/public/css/font-awesome/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${basePath}/public/css/theme.css">
+    <link rel="stylesheet" href="${basePath}/public/css/font-awesome/css/font-awesome.css">
 
-    <script src="${base}/public/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="${basePath}/public/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
 
     <!-- Demo page code -->
 
@@ -78,8 +78,8 @@
                 </ul>
             </li>
 
-        </ul>j
-        <a class="brand" href="index.html"><span class="first">Your</span> <span class="second">Company</span></a>
+        </ul>
+        <a class="brand" href="index.html"><span class="first">tqmall</span> <span class="second">wms</span></a>
     </div>
 </div>
 
@@ -93,8 +93,8 @@
 
     <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Dashboard</a>
     <ul id="dashboard-menu" class="nav nav-list collapse in">
-        <li><a href="${base}/admin/index">Home</a></li>
-        <li ><a href="users.html">Sample List</a></li>
+        <li><a href="${basePath}/admin/index">Home</a></li>
+        <li ><a href="${basePath}/user/getAllUser">用户列表</a></li>
         <li ><a href="user.html">Sample Item</a></li>
         <li ><a href="media.html">Media</a></li>
         <li ><a href="calendar.html">Calendar</a></li>
@@ -196,48 +196,21 @@
 
             <div class="row-fluid">
                 <div class="block span6">
-                    <a href="#tablewidget" class="block-heading" data-toggle="collapse">Users<span class="label label-warning">+10</span></a>
+                    <a href="#tablewidget" class="block-heading" data-toggle="collapse">用户<span ID="span_userCount" class="label label-warning">+10</span></a>
                     <div id="tablewidget" class="block-body collapse in">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>ID</th>
+                                <th>姓名</th>
+                                <th>年龄</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>Tompson</td>
-                                <td>the_mark7</td>
-                            </tr>
-                            <tr>
-                                <td>Ashley</td>
-                                <td>Jacobs</td>
-                                <td>ash11927</td>
-                            </tr>
-                            <tr>
-                                <td>Audrey</td>
-                                <td>Ann</td>
-                                <td>audann84</td>
-                            </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>Robinson</td>
-                                <td>jr5527</td>
-                            </tr>
-                            <tr>
-                                <td>Aaron</td>
-                                <td>Butler</td>
-                                <td>aaron_butler</td>
-                            </tr>
-                            <tr>
-                                <td>Chris</td>
-                                <td>Albert</td>
-                                <td>cab79</td>
-                            </tr>
-                            </tbody>
+                                <tbody id="dev_userList">
+
+                                </tbody>
+                            <#--</div>-->
+
                         </table>
                         <p><a href="users.html">More...</a></p>
                     </div>
@@ -346,11 +319,48 @@
 
 
 
-<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="${basePath}/public/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript">
+    //获取获取用户信息
+    function getUserTop10() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "${basePath}/user/ajax/getAllUser",
+            //data: { id: id, name: name },
+            success: function(json) {
+                $("#dev_userList").html('');
+                var data = json.data;
+                $('#span_userCount').text(data.length);
+                $.each(data, function(index, item) {
+                    if(index>=10){
+                        return ;
+                    }
+                    var tbBody = ""
+                    var trColor;
+                    if (index % 2 == 0) {
+                        trColor = "even";
+                    }
+                    else {
+                        trColor = "odd";
+                    }
+                    tbBody += "<tr class='" + trColor + "'><td>" + item.id + "</td>" + "<td>" + item.userName + "</td>" + "<td>" + item.age + "</td></tr>";
+                    $("#dev_userList").append(tbBody);
+                });
+            },
+            error: function(json) {
+                alert("加载失败");
+            },
+            beforeSend:function(){
+                $("#dev_userList").html('加载中...');
+            }
+        });
+    }
     $("[rel=tooltip]").tooltip();
     $(function() {
         $('.demo-cancel-click').click(function(){return false;});
+        getUserTop10();
+
     });
 </script>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>淘汽档口管理系统</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -8,10 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="public/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="${basePath}/public/bootstrap/css/bootstrap.css">
 
-    <link rel="stylesheet" type="text/css" href="public/css/theme.css">
-    <link rel="stylesheet" href="public/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${basePath}/public/css/theme.css">
+    <link rel="stylesheet" href="${basePath}/public/css/font-awesome/font-awesome.css">
 
     <script src="public/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
 
@@ -37,7 +37,7 @@
 
     <!--&lt;!&ndash; Le HTML5 shim, for IE6-8 support of HTML5 elements &ndash;&gt;-->
     <!--&lt;!&ndash;[if lt IE 9]>-->
-      <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
+    <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
     <!--<![endif]&ndash;&gt;-->
 
     <!-- Le fav and touch icons -->
@@ -46,36 +46,36 @@
     <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">-->
     <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">-->
     <!--<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-  </head>
+</head>
 
-  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
-  <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
-  <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
-  <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!-->
-  <body class="">
-  <!--<![endif]-->
+<!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
+<!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
+<!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<body class="">
+<!--<![endif]-->
 
-    <div class="navbar">
-        <div class="navbar-inner">
-                <ul class="nav pull-right">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav pull-right">
 
-                </ul>
-                <a class="brand" href="index.jsp"><span class="first">淘汽</span> <span class="second">档口</span></a>
-        </div>
+        </ul>
+        <a class="brand" href="index.jsp"><span class="first">淘汽</span> <span class="second">档口</span></a>
     </div>
+</div>
 
 
 
 
 
 
-        <div class="row-fluid">
+<div class="row-fluid">
     <div class="dialog">
         <div class="block">
             <p class="block-heading">淘汽档口管理系统</p>
             <div class="block-body">
-                <form id="loginForm" action="/sign/submit" method="post">
+                <form id="loginForm" action="${basePath}/sign/submit" method="post">
                     <label>用户</label>
                     <input type="text" class="span12" name="signName">
                     <label>密码</label>
@@ -95,19 +95,19 @@
 
 
 
-    <script src="public/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript">
-        $("[rel=tooltip]").tooltip();
-        $(function() {
-            $('.demo-cancel-click').click(function(){return false;});
-            $('#a_submit').click(function(){
+<script src="${basePath}/public/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript">
+    $("[rel=tooltip]").tooltip();
+    $(function() {
+        $('.demo-cancel-click').click(function(){return false;});
+        $('#a_submit').click(function(){
 
-                $('#loginForm').submit();
-            });
+            $('#loginForm').submit();
         });
-    </script>
+    });
+</script>
 
-  </body>
+</body>
 </html>
 
 
