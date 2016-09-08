@@ -1,6 +1,8 @@
 package org.lzh.framework.axe.manager.user;
 import org.lzh.framework.axe.domain.entities.User;
 
+import java.util.List;
+
 /**
  * @Description: 用户信息事物管理接口
  * @author: lizhaohua
@@ -13,4 +15,8 @@ public interface UserManager {
      * @param user
      */
     public  void save(User user);
+
+	public void batchSave(List<User> users);
+
+	public void batchSave2(List<User> users);
 }
