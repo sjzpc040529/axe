@@ -15,7 +15,7 @@
     <!-- 扫描控制器类 -->
     <context:component-scan base-package="org.lzh.framework.axe.web.controller/**/*" />
     <mvc:annotation-driven />
-    <mvc:default-servlet-handler/>
+    <!--<mvc:default-servlet-handler/>-->
 
     <mvc:interceptors>
         <mvc:interceptor>

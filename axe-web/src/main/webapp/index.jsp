@@ -1,11 +1,11 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <title></title>
 </head>
 <body>
-北京阿打发沙发撒旦法是否  是发大水2
+<i class="fa fa-camera-retro"></i> fa-camera-retro
 </body>
 </html>
